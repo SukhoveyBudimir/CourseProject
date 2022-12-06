@@ -19,8 +19,8 @@ func NewServer(serv *service.Service) *Server {
 	return &Server{se: serv}
 }
 
-// GetUser get user by id from db
-func (s *Server) GetUser(ctx context.Context, request *pb.GetUserRequest) (*pb.GetUserResponse, error) {
+// GetPlayer get user by id from db
+func (s *Server) GetPlayer(ctx context.Context, request *pb.GetUserRequest) (*pb.GetUserResponse, error) {
 	accessToken := request.GetAccessToken()
 	if err := s.se.Verify(accessToken); err != nil {
 		return nil, err
@@ -41,8 +41,8 @@ func (s *Server) GetUser(ctx context.Context, request *pb.GetUserRequest) (*pb.G
 	return PlayerProto, nil
 }
 
-// GetAllUsers get all users from db
-func (s *Server) GetAllUsers(ctx context.Context, _ *pb.GetAllRequest) (*pb.GetAllResponse, error) {
+// GetAllPlayers get all users from db
+func (s *Server) GetAllPlayers(ctx context.Context, _ *pb.GetAllRequest) (*pb.GetAllResponse, error) {
 	Players, err := s.se.GetAllUsers(ctx)
 	if err != nil {
 		return nil, err
@@ -58,8 +58,8 @@ func (s *Server) GetAllUsers(ctx context.Context, _ *pb.GetAllRequest) (*pb.GetA
 	return &pb.GetAllResponse{Player: list}, nil
 }
 
-// DeleteUser delete user by id
-func (s *Server) DeleteUser(ctx context.Context, request *pb.DeleteUserRequest) (*pb.Response, error) {
+// DeletePlayer delete user by id
+func (s *Server) DeletePlayer(ctx context.Context, request *pb.DeleteUserRequest) (*pb.Response, error) {
 	idUser := request.GetId()
 	err := s.se.DeleteUser(ctx, idUser)
 	if err != nil {
@@ -68,8 +68,8 @@ func (s *Server) DeleteUser(ctx context.Context, request *pb.DeleteUserRequest) 
 	return new(pb.Response), nil
 }
 
-// UpdateUser update user with new parameters
-func (s *Server) UpdateUser(ctx context.Context, request *pb.UpdateUserRequest) (*pb.Response, error) {
+// UpdatePlayer update user with new parameters
+func (s *Server) UpdatePlayer(ctx context.Context, request *pb.UpdateUserRequest) (*pb.Response, error) {
 	accessToken := request.GetAccessToken()
 	if err := s.se.Verify(accessToken); err != nil {
 		return nil, err

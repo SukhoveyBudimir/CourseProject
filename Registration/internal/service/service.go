@@ -1,9 +1,9 @@
 package service
 
 import (
-	"CourseProject/Registration/internal/model"
-	"CourseProject/Registration/internal/repository"
 	"context"
+	"github.com/SukhoveyBudimir/CourseProject/Registration/internal/model"
+	"github.com/SukhoveyBudimir/CourseProject/Registration/internal/repository"
 )
 
 type Service struct {

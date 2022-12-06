@@ -74,7 +74,6 @@ message GetUserResponse{
 message Player{
   string id = 1;
   string name = 2;
-  int32 games = 3;
-  int32 wins = 4;
-  string password = 5;
+  int32 points = 3;
+  string password = 4;
 }

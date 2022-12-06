@@ -1,9 +1,8 @@
 package repository
 
 import (
-	"CourseProject/Registration/internal/model"
-
 	"context"
+	"github.com/SukhoveyBudimir/CourseProject/Registration/internal/model"
 
 	"fmt"
 
