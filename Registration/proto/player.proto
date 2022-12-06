@@ -1,0 +1,80 @@
+syntax = "proto3";
+package api;
+option go_package = ".";
+
+service GuessTheNumber{
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+  rpc Registration(RegistrationRequest)returns(RegistrationResponse){};
+  rpc UpdateUser(UpdateUserRequest) returns (Response) {}
+  rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetAllUsers(GetAllRequest) returns (GetAllResponse) {}
+  rpc DeleteUser(DeleteUserRequest) returns (Response) {}
+  rpc Authentication(AuthenticationRequest)returns(AuthenticationResponse);
+}
+
+message AuthenticationRequest{
+  string id = 1;
+  string password = 2;
+
+}
+
+message RegistrationResponse{
+  string id = 1;
+}
+
+message AuthenticationResponse{
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+message GetAllRequest {}
+
+message UpdateUserRequest{
+  string accessToken = 1;
+  Player player = 2;
+  string id = 3;
+}
+
+message RegistrationRequest{
+  string name = 2;
+  string password = 5;
+}
+
+message CreateUserRequest{
+  string name = 1;
+  string password = 2;
+}
+
+message CreateUserResponse{
+  int32 id = 1;
+  int32 games = 2;
+  int32 wins = 3;
+}
+
+message GetAllResponse{
+  repeated Player player = 1;
+}
+
+message Response {}
+
+message GetUserRequest{
+  string accessToken = 1;
+  string id = 2;
+}
+
+message DeleteUserRequest{
+  string accessToken = 1;
+  string id = 2;
+}
+
+message GetUserResponse{
+  Player player = 1;
+}
+
+message Player{
+  string id = 1;
+  string name = 2;
+  int32 games = 3;
+  int32 wins = 4;
+  string password = 5;
+}
