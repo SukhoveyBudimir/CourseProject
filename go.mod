@@ -7,7 +7,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/jackc/pgx/v4 v4.17.2
 	github.com/labstack/gommon v0.4.0
-	golang.org/x/crypto v0.3.0
+	golang.org/x/crypto v0.4.0
 	google.golang.org/grpc v1.51.0
 	google.golang.org/protobuf v1.28.1
 )

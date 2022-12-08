@@ -285,6 +285,7 @@ type RegistrationRequest struct {
 
 	Name     string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Password string `protobuf:"bytes,5,opt,name=password,proto3" json:"password,omitempty"`
+	Points   int32
 }
 
 func (x *RegistrationRequest) Reset() {
