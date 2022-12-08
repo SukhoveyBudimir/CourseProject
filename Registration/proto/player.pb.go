@@ -341,6 +341,7 @@ type CreateUserRequest struct {
 
 	Name     string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Points   int32
 }
 
 func (x *CreateUserRequest) Reset() {
