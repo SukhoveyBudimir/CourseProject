@@ -1,0 +1,11 @@
+version: '3'
+services:
+  postgres:
+    container_name: postgres-3xIN
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=players
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - "49153:5432"
