@@ -23,7 +23,7 @@ func (s *Server) CreatePlayer(ctx context.Context, request *pb.CreateUserRequest
 		Name:   request.Name,
 		Points: request.Points,
 	}
-	newID, err := s.se.GetUser(ctx, &m)
+	newID, err := s.se.CreatePlayer(ctx, &m)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +33,7 @@ func (s *Server) CreatePlayer(ctx context.Context, request *pb.CreateUserRequest
 // GetPlayer get Player by id from db
 func (s *Server) GetPlayer(ctx context.Context, request *pb.GetUserRequest) (*pb.GetUserResponse, error) {
 	idPlayer := request.GetId()
-	PlayerDB, err := s.se.GetUser(ctx, idPlayer)
+	PlayerDB, err := s.se.GetPlayer(ctx, idPlayer)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func (s *Server) GetPlayer(ctx context.Context, request *pb.GetUserRequest) (*pb
 
 // GetAllPlayer get all Player from db
 func (s *Server) GetAllPlayer(ctx context.Context, _ *pb.GetAllRequest) (*pb.GetAllResponse, error) {
-	Players, err := s.se.GetAllUsers(ctx)
+	Players, err := s.se.GetAllPlayer(ctx)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (s *Server) GetAllPlayer(ctx context.Context, _ *pb.GetAllRequest) (*pb.Get
 // DeletePlayer delete Player by id
 func (s *Server) DeletePlayer(ctx context.Context, request *pb.DeleteUserRequest) (*pb.Response, error) {
 	idMed := request.GetId()
-	err := s.se.DeleteUser(ctx, idMed)
+	err := s.se.DeletePlayer(ctx, idMed)
 	if err != nil {
 		return nil, err
 	}
@@ -81,7 +81,7 @@ func (s *Server) ChangePlayer(ctx context.Context, request *pb.UpdateUserRequest
 		Points: request.Player.Points,
 	}
 	idMed := request.GetId()
-	err := s.se.UpdateUser(ctx, idMed, pl)
+	err := s.se.UpdatePlayer(ctx, idMed, pl)
 	if err != nil {
 		return nil, err
 	}
